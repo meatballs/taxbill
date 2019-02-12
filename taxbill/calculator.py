@@ -23,7 +23,9 @@ def tax_amount(taxable_amount, bands):
     """
     amounts = [
         single_band_tax_amount(
-            min([taxable_amount, band["limit"]]), band["rate"], band["threshold"]
+            min([taxable_amount, band["limit"]]),
+            band["rate"],
+            band["threshold"],
         )
         for band in bands
     ]
@@ -50,7 +52,7 @@ def dividend_tax(salary, dividend, rates):
     idx, _ = next(
         (idx, band)
         for idx, band in enumerate(rates["income_tax_earnings"])
-        if band["limit"] > salary + dividend > band["threshold"]
+        if band["limit"] > salary + dividend >= band["threshold"]
     )
     # Use that band to apply the relevant rate to the dividend amount
     rate = rates["income_tax_dividend"]["rates"][idx]
@@ -73,7 +75,8 @@ def all_taxes(salary, dividend, personal_pension, employer_pension, rates):
         )
 
     corporation_tax = single_band_tax_amount(
-        salary + result["employers_ni"] + employer_pension, rates["corporation_tax"]
+        salary + result["employers_ni"] + employer_pension,
+        rates["corporation_tax"],
     )
     result["corporation_tax"] = round(corporation_tax, 2)
 

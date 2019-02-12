@@ -15,6 +15,7 @@ RATES = {
         {"threshold": 10000, "limit": 40000, "rate": 0.2},
         {"threshold": 40000, "limit": 100000, "rate": 0.4},
     ],
+    "income_tax_dividend": {"threshold": 2000, "rates": [0.1, 0.1, 0.5]},
 }
 
 
@@ -50,3 +51,10 @@ def test_salary_taxes():
         "employers_ni": 1800,
         "income_tax_earnings": 2000,
     }
+
+
+def test_dividend_tax():
+    assert calc.dividend_tax(10000, 10000, RATES) == 800
+    assert calc.dividend_tax(20000, 10000, RATES) == 800
+    assert calc.dividend_tax(30000, 10000, RATES) == 4000
+    assert calc.dividend_tax(50000, 10000, RATES) == 4000
