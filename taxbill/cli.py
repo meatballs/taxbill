@@ -132,9 +132,6 @@ def calculate(salary, dividend, employer_pension, personal_pension, year):
     help="Calendar year in which tax year ends",
 )
 def optimise(requirement, pension, year):
-    if year is None:
-        year = datetime.now().year
-
     optimal = run(requirement=requirement, pension=pension, rates=RATES[year])
     taxes = all_taxes(rates=RATES[year], **optimal)
     display(**optimal, **taxes)
