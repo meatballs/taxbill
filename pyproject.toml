@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "taxbill"
-version = "0.1.0"
+version = "0.1.1"
 description = "Tax calculator and optimiser for UK freelancers"
 authors = ["Owen Campbell"]
 license = "GPL-3.0"
