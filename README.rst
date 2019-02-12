@@ -26,6 +26,9 @@ View how to minimise the tax you will pay using::
 
     $ taxbill optimise
 
+**NOTE** The optimiser will only work within a single income tax band, currently
+set to be the basic rate band.
+
 Each option can be passed on the command line. e.g.::
 
     $ taxbill optimise --requirement=30000 --pension=10000 --year=2019
