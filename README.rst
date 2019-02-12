@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/meatballs/taxbill.svg?branch=master
+    :target: https://travis-ci.org/meatballs/taxbill
+
 Taxbill
 =======
 A tax calculator and optimiser for UK freelancers who provide their services
