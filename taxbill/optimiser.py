@@ -20,16 +20,10 @@ def run(requirement, pension, rates, income_tax_band=1):
         name="dividend", lowBound=0, upBound=tax_band["limit"], cat=LpInteger
     )
     personal_pension = LpVariable(
-        name="personal_pension",
-        lowBound=0,
-        upBound=tax_band["limit"],
-        cat=LpInteger,
+        name="personal_pension", lowBound=0, upBound=tax_band["limit"], cat=LpInteger
     )
     employer_pension = LpVariable(
-        name="employer_pension",
-        lowBound=0,
-        upBound=tax_band["limit"],
-        cat=LpInteger,
+        name="employer_pension", lowBound=0, upBound=tax_band["limit"], cat=LpInteger
     )
 
     problem += (
@@ -54,15 +48,9 @@ def run(requirement, pension, rates, income_tax_band=1):
         "TotalTaxBill",
     )
 
-    problem += (
-        salary + dividend + employer_pension == requirement,
-        "RequiredAmount",
-    )
+    problem += (salary + dividend + employer_pension == requirement, "RequiredAmount")
     problem += personal_pension <= salary, "PensionLimitation"
-    problem += (
-        employer_pension + personal_pension == pension,
-        "PensionRequirement",
-    )
+    problem += (employer_pension + personal_pension == pension, "PensionRequirement")
 
     problem.solve()
 

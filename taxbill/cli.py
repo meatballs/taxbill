@@ -63,15 +63,9 @@ def taxbill():
 
 
 @taxbill.command()
+@click.option("-s", "--salary", default=0, prompt="Salary", help="Annual gross salary")
 @click.option(
-    "-s", "--salary", default=0, prompt="Salary", help="Annual gross salary"
-)
-@click.option(
-    "-d",
-    "--dividend",
-    default=0,
-    prompt="Dividend",
-    help="Total dividend payments",
+    "-d", "--dividend", default=0, prompt="Dividend", help="Total dividend payments"
 )
 @click.option(
     "-e",
@@ -96,9 +90,7 @@ def taxbill():
     help="Calendar year in which tax year ends",
 )
 def calculate(salary, dividend, employer_pension, personal_pension, year):
-    taxes = all_taxes(
-        salary, dividend, personal_pension, employer_pension, RATES[year]
-    )
+    taxes = all_taxes(salary, dividend, personal_pension, employer_pension, RATES[year])
     display(
         salary=salary,
         dividend=dividend,

@@ -23,9 +23,7 @@ def tax_amount(taxable_amount, bands):
     """
     amounts = [
         single_band_tax_amount(
-            min([taxable_amount, band["limit"]]),
-            band["rate"],
-            band["threshold"],
+            min([taxable_amount, band["limit"]]), band["rate"], band["threshold"]
         )
         for band in bands
     ]
@@ -75,8 +73,7 @@ def all_taxes(salary, dividend, personal_pension, employer_pension, rates):
         )
 
     corporation_tax = single_band_tax_amount(
-        salary + result["employers_ni"] + employer_pension,
-        rates["corporation_tax"],
+        salary + result["employers_ni"] + employer_pension, rates["corporation_tax"]
     )
     result["corporation_tax"] = round(corporation_tax, 2)
 
