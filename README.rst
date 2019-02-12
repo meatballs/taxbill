@@ -34,3 +34,9 @@ You can view the options available with::
 or::
 
     $ taxbill optimise --help
+
+Disclaimer
+----------
+Use this software at your own risk. Doing so should not be considered financial
+or legal advice and the author makes no guarantee or promise as to any results
+that might be obtained from its use.
