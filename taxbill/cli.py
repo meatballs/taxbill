@@ -9,6 +9,7 @@ from taxbill.calculator import all_taxes
 from taxbill.optimiser import run
 
 RATES = load(get_data("taxbill", "rates.yml").decode("utf8"))
+CURRENT_YEAR = datetime.now().year
 
 
 def display(
@@ -90,12 +91,11 @@ def taxbill():
     "-y",
     "--year",
     type=int,
-    default=None,
+    default=CURRENT_YEAR,
+    prompt="Tax year ending in",
     help="Calendar year in which tax year ends",
 )
 def calculate(salary, dividend, employer_pension, personal_pension, year):
-    if year is None:
-        year = datetime.now().year
     taxes = all_taxes(
         salary, dividend, personal_pension, employer_pension, RATES[year]
     )
@@ -127,7 +127,8 @@ def calculate(salary, dividend, employer_pension, personal_pension, year):
     "-y",
     "--year",
     type=int,
-    default=None,
+    default=CURRENT_YEAR,
+    prompt="Tax year ending in",
     help="Calendar year in which tax year ends",
 )
 def optimise(requirement, pension, year):
