@@ -5,9 +5,9 @@ from pkgutil import get_data
 import click
 from yaml import load
 
+from taxbill.analyser import analyse
 from taxbill.calculator import all_taxes
 from taxbill.optimiser import run
-from taxbill.analyser import analyse
 
 RATES = load(get_data("taxbill", "rates.yml").decode("utf8"))
 CURRENT_YEAR = datetime.now().year
