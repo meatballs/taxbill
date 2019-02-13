@@ -4,7 +4,11 @@
 def analyse(
     salary,
     dividend,
-    employer_pension, personal_pension, employers_ni=0, employees_ni=0, income_tax_earnings=0,
+    employer_pension,
+    personal_pension,
+    employers_ni=0,
+    employees_ni=0,
+    income_tax_earnings=0,
     income_tax_dividend=0,
     income_tax_pension_relief=0,
     corporation_tax=0,
